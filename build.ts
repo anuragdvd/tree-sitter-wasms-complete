@@ -72,6 +72,27 @@ PromisePool.withConcurrency(os.cpus().length)
     }
   })
   .then(async () => {
+    // Build local tree-sitter-haskell
+    if (fs.existsSync(path.join(__dirname, "tree-sitter-haskell"))) {
+      try {
+        console.log(`⏳ Building tree-sitter-haskell (local)`);
+        await exec(`pnpm tree-sitter build-wasm ${path.join(__dirname, "tree-sitter-haskell")}`);
+        console.log(`✅ Finished building tree-sitter-haskell (local)`);
+      } catch (e) {
+        console.error(`🔥 Failed to build tree-sitter-haskell:\n`, e);
+        hasErrors = true;
+      }
+    }
+
+    // Copy existing tree-sitter-purescript.wasm
+    if (fs.existsSync(path.join(__dirname, "tree-sitter-purescript.wasm"))) {
+      fs.copyFileSync(
+        path.join(__dirname, "tree-sitter-purescript.wasm"),
+        path.join(outDir, "tree-sitter-purescript.wasm")
+      );
+      console.log(`✅ Copied tree-sitter-purescript.wasm`);
+    }
+
     if (hasErrors) {
       process.exit(1);
     }

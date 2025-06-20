@@ -1,9 +1,9 @@
 {
-  "name": "tree-sitter-wasms",
-  "version": "0.1.12",
-  "description": "Prebuilt WASM binaries for tree-sitter's language parsers.",
-  "repository": "https://github.com/Gregoor/tree-sitter-wasms",
-  "author": "Gregor <gregorwbr@gmail.com>, Menci <huanghaorui301@gmail.com>",
+  "name": "tree-sitter-wasms-complete",
+  "version": "0.1.17",
+  "description": "Prebuilt WASM binaries for tree-sitter's language parsers and we dont ignore FP languages.",
+  "repository": "https://github.com/anuragdvd/tree-sitter-wasms-complete",
+  "author": "Anurag Dwivedi",
   "license": "Unlicense",
   "scripts": {
     "build": "ts-node build.ts"
@@ -19,7 +19,7 @@
     "tree-sitter-bash": "^0.20.5",
     "tree-sitter-c": "^0.20.7",
     "tree-sitter-c-sharp": "^0.20.0",
-    "tree-sitter-cli": "^0.20.8",
+    "tree-sitter-cli": "^0.24.3",
     "tree-sitter-cpp": "^0.20.4",
     "tree-sitter-css": "^0.20.0",
     "tree-sitter-elisp": "^1.3.0",
@@ -56,8 +56,5 @@
     "/out"
   ],
   "packageManager": "pnpm@8.10.5",
-  "main": "bindings/node",
-  "dependencies": {
-    "tree-sitter-wasms": "^0.1.11"
-  }
+  "main": "bindings/node"
 }
